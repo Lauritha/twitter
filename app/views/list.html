@@ -1,5 +1,19 @@
+<input type="text" ng-model="Tweet.new" placeholder="Que estas pensando...">
+<button ng-click="Tweet.agregarTweet()">Agregar</button>
 <ul>
-  <li ng-repeat="todo in todos">
-    {{ todo.desc }}
+  <li ng-repeat="todo in Tweet.data">
+    <div ng-hide="Tweet.selected === todo.id">
+    	<button ng-click="Tweet.completarTweet(todo.id)">Favorito</button>
+    	<span ng-style="{'color': todo.favorito ? 'green' : 'none' }" ng-click="Tweet.seleccionarTweet(todo.id)">
+    	{{ todo.desc }}
+    	</span>
+    	<button ng-click="Tweet.copiarTweet(todo.id)">Citar Tweet</button>
+    	<button ng-click="Tweet.eliminarTweet(todo.id)">Borrar</button>
+    </div>
+    <div ng-show="Tweet.selected === todo.id">
+		<input type="text" ng-model="Tweet.temporal">
+		<button ng-click="Tweet.actualizarTweet()">Actualizar</button>
+		<button ng-click="Tweet.seleccionarTweet()">Cancelar</button>
+   </div>
   </li>
 </ul>
