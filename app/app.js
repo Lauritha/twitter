@@ -31,6 +31,9 @@ angular.module('miapp')
 
     this.eliminarTweet = function eliminarTweet(id) {
       this.data = this.data.filter(function filtrar(el) { 
+        if (el.id = el.favorito) {
+          console.log("No es posible borrar el tweet, es favorito")
+        }
         return id !== el.id 
       })
     }
